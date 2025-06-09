@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olivia Sater - Electrical Engineering Student</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            animation: gradient-shift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #667eea;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.8s; }
+
+        .section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #333;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-category:hover::before {
+            opacity: 1;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-category h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-list {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            color: #555;
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .project {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 4px solid #4ecdc4;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(69, 183, 209, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project:hover::before {
+            opacity: 1;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project p {
+            color: #555;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .experience-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff6b6b;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 107, 107, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .experience-item:hover::before {
+            opacity: 1;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-item h3 {
+            color: #333;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .experience-item p {
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-section h2::after {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Olivia Sater</h1>
+            <p class="subtitle">Electrical Engineering Student • Northeastern University</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>sater.o@northeastern.edu</span>
+                </div>
+                <div class="contact-item">
+                    <span>🎓</span>
+                    <span>3rd Year EE Student</span>
+                </div>
+                <div class="contact-item">
+                    <span>🔍</span>
+                    <span>Seeking Co-op Opportunities</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>About Me</h2>
+            <p>I'm a passionate third-year Electrical Engineering student at Northeastern University with a strong foundation in both technical skills and leadership experience. My background combines hands-on engineering projects with team leadership roles, demonstrating my ability to collaborate effectively while delivering innovative solutions. I'm actively seeking co-op opportunities where I can apply my technical knowledge and contribute to meaningful engineering projects.</p>
+        </section>
+
+        <section class="section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming & Software</h3>
+                    <ul class="skill-list">
+                        <li>Circuit Design & Analysis</li>
+                        <li>Computer Programming</li>
+                        <li>Game Development</li>
+                        <li>User Interface Design</li>
+                        <li>Software-Hardware Integration</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Hardware & Electronics</h3>
+                    <ul class="skill-list">
+                        <li>Circuit Board Design</li>
+                        <li>Wiring & Connections</li>
+                        <li>3D Printing & Prototyping</li>
+                        <li>Electronic Component Integration</li>
+                        <li>Hardware Testing & Debugging</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Project Management</h3>
+                    <ul class="skill-list">
+                        <li>Cross-functional Team Collaboration</li>
+                        <li>Product Design & Development</li>
+                        <li>Project Presentation</li>
+                        <li>Timeline Management</li>
+                        <li>Technical Documentation</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Leadership & Communication</h3>
+                    <ul class="skill-list">
+                        <li>Team Leadership</li>
+                        <li>Activity Planning & Coordination</li>
+                        <li>Mentoring & Training</li>
+                        <li>Public Speaking</li>
+                        <li>Cross-team Collaboration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Featured Project</h2>
+            <div class="project">
+                <h3>Interactive Recycling Education System</h3>
+                <p>Led a multidisciplinary engineering team to design and build an innovative educational tool that teaches children about recycling through interactive gameplay. The system combines physical 3D-printed recycling bins with digital gaming elements, creating an engaging learning experience that promotes environmental awareness.</p>
+                
+                <p><strong>Key Accomplishments:</strong></p>
+                <ul style="margin: 15px 0; padding-left: 20px; color: #555;">
+                    <li>Designed and implemented circuit boards to connect physical bins to computer interface</li>
+                    <li>Developed custom wiring solutions for seamless hardware-software integration</li>
+                    <li>Collaborated with computer science and mechanical engineering students to create cohesive product</li>
+                    <li>Programmed interactive game logic linked to physical recycling bin interactions</li>
+                    <li>Successfully presented final product to faculty and industry professionals</li>
+                </ul>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">Circuit Design</span>
+                    <span class="tech-tag">3D Printing</span>
+                    <span class="tech-tag">Programming</span>
+                    <span class="tech-tag">Hardware Integration</span>
+                    <span class="tech-tag">Team Leadership</span>
+                    <span class="tech-tag">Product Design</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Leadership Experience</h2>
+            <div class="experience-item">
+                <h3>Assistant Head Counselor</h3>
+                <p><strong>Summer Camp Leadership Role</strong></p>
+                <p>Demonstrated exceptional leadership and organizational skills while managing camp operations and mentoring junior staff. Collaborated effectively with camp committee members, head counselors, and Counselors-in-Training (CITs) to ensure smooth daily operations and positive camper experiences.</p>
+                
+                <p style="margin-top: 15px;"><strong>Key Responsibilities:</strong></p>
+                <ul style="margin: 10px 0; padding-left: 20px; color: #555;">
+                    <li>Planned and coordinated engaging activities for diverse groups of campers</li>
+                    <li>Led and mentored Counselors-in-Training, providing guidance and skill development</li>
+                    <li>Collaborated with multi-level team including committee members and head counselors</li>
+                    <li>Ensured camper safety and maintained high program quality standards</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Certified Lifeguard</h3>
+                <p><strong>Water Safety & Emergency Response</strong></p>
+                <p>Maintained water safety standards and provided emergency response capabilities. This role required quick decision-making, attention to detail, and the ability to remain calm under pressure while ensuring the safety of others.</p>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h2>Let's Connect!</h2>
+            <p>I'm eager to bring my technical skills, leadership experience, and passion for engineering to a dynamic co-op opportunity. Ready to contribute to innovative projects and continue learning in a professional environment.</p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interaction effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to skill categories
+            const skillCategories = document.querySelectorAll('.skill-category');
+            skillCategories.forEach(category => {
+                category.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                category.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections for scroll animations
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
