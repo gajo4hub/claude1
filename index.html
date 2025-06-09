@@ -90,6 +90,36 @@
             color: #93c5fd;
         }
 
+        .resume-button-container {
+            margin-top: 25px;
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        .resume-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .resume-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+        }
+
+        .resume-button:active {
+            transform: translateY(0);
+        }
+
         .section {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -408,6 +438,12 @@
                     <span>Seeking Co-op Opportunities</span>
                 </div>
             </div>
+            <div class="resume-button-container">
+                <a href="#" class="resume-button" id="resumeBtn">
+                    <span>📄</span>
+                    Download Resume
+                </a>
+            </div>
         </header>
 
         <section class="section">
@@ -519,6 +555,14 @@
     <script>
         // Add smooth scrolling and interaction effects
         document.addEventListener('DOMContentLoaded', function() {
+            // Resume download functionality
+            const resumeBtn = document.getElementById('resumeBtn');
+            resumeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // For now, show an alert with instructions
+                alert('To add your resume:\n\n1. Upload your PDF resume to the same folder as this HTML file\n2. Name it "Olivia_Sater_Resume.pdf"\n3. The download will work automatically!\n\nAlternatively, you can host it online and update the href link.');
+            });
+
             // Add hover effects to skill categories
             const skillCategories = document.querySelectorAll('.skill-category');
             skillCategories.forEach(category => {
